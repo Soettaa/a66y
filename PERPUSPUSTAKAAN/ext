@@ -1,0 +1,18 @@
+<?php
+$session_id = $_SESSION['id_anggota'];
+$anggota = fetch("SELECT nama_anggota 
+                  FROM anggota 
+                  WHERE id_anggota = '$session_id'")[0];
+?>
+
+<div class="field">
+    <label>ID Anggota</label>
+
+    <input type="text" 
+           value="<?= htmlspecialchars($session_id . ' - ' . $anggota['nama_anggota']) ?>" 
+           readonly>
+
+    <input type="hidden" 
+           name="id_anggota" 
+           value="<?= htmlspecialchars($session_id) ?>">
+</div>
